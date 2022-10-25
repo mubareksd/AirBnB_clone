@@ -1,1 +1,1 @@
-# AirBnB_clone
+# 0x00. AirBnB_clone - console
