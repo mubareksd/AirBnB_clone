@@ -34,7 +34,7 @@ class HBNBCommand(cmd.Cmd):
         elif line not in storage.classes():
             print("** class doesn't exist **")
         else:
-            obj = BaseModel()
+            obj = storage.classes()[line]()
             obj.save()
             print(obj.id)
 
