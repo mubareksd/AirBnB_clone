@@ -9,7 +9,7 @@ class Place(BaseModel):
     """
     Place class
     """
-    
+
     city_id = ""
     user_id = ""
     name = ""
