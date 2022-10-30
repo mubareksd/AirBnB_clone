@@ -39,6 +39,11 @@ class TestBaseModel(TestCase):
         doc = BaseModel.__init__.__doc__
         self.assertGreater(len(doc), 1)
 
+    def test_str_doc(self):
+        """test str functiom documentation"""
+        doc = BaseModel.__str__.__doc__
+        self.assertGreater(len(doc), 1)
+
     def test_save_doc(self):
         """test save method documentation"""
         doc = BaseModel.save.__doc__
@@ -57,12 +62,6 @@ class TestBaseModel(TestCase):
         self.assertIsInstance(obj.id, str)
         self.assertIsInstance(obj.updated_at, datetime)
         self.assertIsInstance(obj.created_at, datetime)
-
-    def test_str(self):
-        """test str method"""
-        obj = BaseModel()
-        comp = ""
-        self.assertEqual(obj.__str__(), comp)
 
     def test_save(self):
         """test save method"""
