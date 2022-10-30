@@ -43,5 +43,4 @@ class FileStorage:
             obj_dict = json.load(f)
             obj_dict = {k: classes[v["__class__"]]
                         (**v) for k, v in obj_dict.items()}
-            # TODO: should this overwrite or insert?
             FileStorage.__objects = obj_dict
