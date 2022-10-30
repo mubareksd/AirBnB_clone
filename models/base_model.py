@@ -14,7 +14,7 @@ class BaseModel:
 
     def __init__(self, *args, **kwargs):
         """initialization"""
-        if kwargs != {}:
+        if kwargs is not None and kwargs != {}:
             for key, value in kwargs.items():
                 if key != "__class__":
                     if key in ('created_at', 'updated_at'):
