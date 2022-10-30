@@ -1,18 +1,19 @@
 #!/usr/bin/python3
 """
-review module
+user module
 """
 from models.base_model import BaseModel
 
 
-class Review(BaseModel):
+class User(BaseModel):
     """
-    Review class
+    User class
     """
 
-    place_id = ""
-    user_id = ""
-    text = ""
+    email = ""
+    password = ""
+    first_name = ""
+    last_name = ""
 
     def __init__(self, *args, **kwargs):
         """Overriding constructor"""

@@ -11,3 +11,7 @@ class Amenity(BaseModel):
     """
 
     name = ""
+
+    def __init__(self, *args, **kwargs):
+        """Overriding constructor"""
+        super().__init__(*args, **kwargs)

@@ -12,3 +12,7 @@ class City(BaseModel):
 
     state_id = ""
     name = ""
+
+    def __init__(self, *args, **kwargs):
+        """Overriding constructor"""
+        super().__init__(*args, **kwargs)

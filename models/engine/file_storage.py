@@ -3,6 +3,7 @@
 file_storage module
 """
 import json
+import os.path
 
 
 class FileStorage:
@@ -34,10 +35,13 @@ class FileStorage:
         (only if the JSON file (__file_path) exists ; otherwise,
         do nothing. If the file doesn’t exist, no exception should be raised)
         """
-        try:
-            with open(self.__file_path, 'r') as f:
-                jl = json.load(f)
-            for key in jl:
-                self.__objects[key] = classes[jl[key]["__class__"]](**jl[key])
-        except:
-            pass
+        from models.base_model import BaseModel
+        if not os.path.isfile(FileStorage.__file_path):
+            return
+        classes = {"BaseModel": BaseModel}
+        with open(FileStorage.__file_path, "r", encoding="utf-8") as f:
+            obj_dict = json.load(f)
+            obj_dict = {k: classes[v["__class__"]]
+                        (**v) for k, v in obj_dict.items()}
+            # TODO: should this overwrite or insert?
+            FileStorage.__objects = obj_dict
