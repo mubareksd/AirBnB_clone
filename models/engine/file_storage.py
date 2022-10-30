@@ -34,3 +34,10 @@ class FileStorage:
         (only if the JSON file (__file_path) exists ; otherwise,
         do nothing. If the file doesn’t exist, no exception should be raised)
         """
+        try:
+            with open(self.__file_path, 'r') as f:
+                jl = json.load(f)
+            for key in jl:
+                self.__objects[key] = classes[jl[key]["__class__"]](**jl[key])
+        except:
+            pass
