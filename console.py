@@ -81,8 +81,13 @@ class HBNBCommand(cmd.Cmd):
             args = line.split(' ')
             if args[0] not in storage.classes():
                 print("** class doesn't exist **")
-        for k in storage.all():
-            print(storage.all()[k])
+            else:
+                l = [str(obj) for key, obj in storage.all().items()
+                     if type(obj).__name__ == args[0]]
+                print(l)
+        else:
+            l = [str(obj) for key, obj in storage.all().items()]
+            print(l)
 
     def do_update(self, line):
         """Updates an instance based on the class name
