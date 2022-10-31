@@ -6,7 +6,6 @@ from unittest import TestCase
 from uuid import uuid4
 from datetime import datetime
 from time import sleep
-import inspect
 import pycodestyle
 from models.base_model import BaseModel
 
@@ -66,7 +65,7 @@ class TestBaseModel(TestCase):
     def test_save(self):
         """test save method"""
         obj = BaseModel()
-        sleep(0.5)
+        sleep(1)
 
         now = datetime.now().replace(microsecond=0)
         obj.save()
@@ -75,4 +74,23 @@ class TestBaseModel(TestCase):
     def test_to_dict(self):
         """test to_dict method"""
         obj = BaseModel()
-        my_model_dict = obj.to_dict()
+        obj.name = "Holberton"
+        obj.my_number = 89
+
+        output = obj.to_dict()
+
+        self.assertIsInstance(output, dict)
+
+        o_id = output['id']
+        updated_at = output['updated_at']
+        created_at = output['created_at']
+        class_name = output['__class__']
+        name = output['name']
+        my_number = output['my_number']
+
+        self.assertIsInstance(o_id, str)
+        self.assertIsInstance(updated_at, str)
+        self.assertIsInstance(created_at, str)
+        self.assertIsInstance(class_name, str)
+        self.assertIsInstance(name, str)
+        self.assertIsInstance(my_number, int)
