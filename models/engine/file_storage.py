@@ -2,8 +2,9 @@
 """
 file_storage module
 """
+import datetime
 import json
-import os.path
+import os
 
 
 class FileStorage:
@@ -65,6 +66,10 @@ class FileStorage:
     def attributes(self):
         """Returns the valid attributes and their types for classname."""
         attributes = {
+            "BaseModel":
+                     {"id": str,
+                      "created_at": datetime.datetime,
+                      "updated_at": datetime.datetime},
             "User":
                      {"email": str,
                       "password": str,
