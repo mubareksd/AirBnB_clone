@@ -24,7 +24,10 @@ class HBNBCommand(cmd.Cmd):
         match = re.search("^(\w*)\.(\w+)(?:\(([^)]*)\))$", line)
         if not match:
             return line
-        command = match.group(2) + " " + match.group(1) + " " + match.group(3)
+        classname = match.group(1)
+        method = match.group(2)
+        args = match.group(3)
+        command = method + " " + classname + " " + args
         self.onecmd(command)
         return ""
 
